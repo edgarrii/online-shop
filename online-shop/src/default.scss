@@ -7,7 +7,12 @@ html, body {
   padding: 0;
 }
 
-html, body, #root, .App, main {
+html,
+body,
+#root,
+.App,
+main,
+.fullHeight {
   height: 100%;
 }
 
