@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../components/header/Header";
+import Header from "../components/Header/Header";
 
 const HomepageLayout = (props) => {
   return (
     <div className="fullHeight">
-      <Header />
+      <Header {...props} />
       {props.children}
     </div>
   );

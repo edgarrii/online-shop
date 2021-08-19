@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../components/header/Header";
+import Header from "../components/Header/Header";
 
 const MainLayout = (props) => {
   return (
     <div>
-      <Header />
+      <Header {...props} />
       <div className="main">{props.children}</div>
     </div>
   );
