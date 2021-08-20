@@ -48,3 +48,13 @@ a, a:hover {
   margin: 0 auto;
 }
 
+.btn {
+  transition: all .4s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.02);
+  color: white;
+  background: #4b634b;
+}
+

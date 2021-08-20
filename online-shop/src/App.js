@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { auth, handleUserProfile } from "./firebase/utils";
+import { setCurrentUser } from "./redux/User/user.actions";
 
 //layouts
 import MainLayout from "./layouts/MainLayout";
@@ -63,7 +65,7 @@ class App extends Component {
             exact
             path="/"
             render={() => (
-              <HomepageLayout currentUser={currentUser}>
+              <HomepageLayout>
                 <Homepage />
               </HomepageLayout>
             )}
@@ -75,7 +77,7 @@ class App extends Component {
               currentUser ? (
                 <Redirect to="/" />
               ) : (
-                <MainLayout currentUser={currentUser}>
+                <MainLayout>
                   <LoginPage />
                 </MainLayout>
               )
@@ -87,7 +89,7 @@ class App extends Component {
               currentUser ? (
                 <Redirect to="/" />
               ) : (
-                <MainLayout currentUser={currentUser}>
+                <MainLayout>
                   <Registration />
                 </MainLayout>
               )
@@ -99,4 +101,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ user }) => {
+  currentUser: user.currentUser;
+};
+
+const mapDispatchToProps = (dispatch) => {
+  setCurrentUser: (user) => dispatch(setCurrentUser(user));
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

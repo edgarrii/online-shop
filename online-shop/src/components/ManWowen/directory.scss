@@ -26,7 +26,16 @@
         z-index: 1;
       }
 
+      .link:hover {
+        color: white;
+        background: #4b634b;
+      }
+
       a {
+        width: 25rem;
+        height: 3.6rem;
+        text-align: center;
+        transition: all .4s ease-in-out;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -38,9 +47,9 @@
         line-height: 1;
         font-weight: 400;
         text-transform: uppercase;
-        background: white;
+        background: rgb(237, 237, 237);
+        color: black;
         padding: 8px 10px;
-        border: 1px solid black;
       }
     }
   }
