@@ -1,4 +1,4 @@
-.signIn {
+.signUp {
   display: block;
   width: 100%;
   max-width: 40.0rem;
@@ -6,35 +6,27 @@
   border: 1px solid black;
 
   .wrap {
-    padding: 10px;
+    padding: 1rem;
 
     h2 {
       display: block;
       width: 100%;
       padding: 0;
+      margin: 0 auto;
+
       font-size: 3rem;
       text-align: center;
       line-height: 1;
       font-weight: 400;
       text-transform: uppercase;
-      margin: 0 auto;
     }
 
-    //.btn {
-    //  margin-top: 2rem;
-    //}
+    .formWrap {
+      margin: 3rem auto 0;
+    }
 
-    .socialSignIn {
-      margin: 2rem auto 0rem;
-
-      .btn {
-        margin-top: .5rem;
-      }
-
-      .row {
-        width: 100%;
-        margin: 1rem auto 0;
-      }
+    .btn {
+      margin-top: 2rem;
     }
   }
 }
