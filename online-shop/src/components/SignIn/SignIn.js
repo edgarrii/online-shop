@@ -5,7 +5,7 @@ import { auth, signInWithGoogle } from "../../firebase/utils";
 import FormInput from "../Forms/FormInput/FormInput";
 import { withRouter } from "react-router-dom";
 
-const SignIn = (props) => {
+const SignIn = props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,10 +18,13 @@ const SignIn = (props) => {
     e.preventDefault();
 
     try {
+
       await auth.signInWithEmailAndPassword(email, password);
       resetForm();
       props.history.push("/");
+
     } catch (e) {
+      
       console.log(e);
       props.history.push("/")
     }

@@ -15,11 +15,12 @@ import WithAuth from "./hoc/withAuth";
 import Homepage from "./pages/Homepage/Homepage";
 import Registration from "./pages/Registration/Registration";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import "./default.scss";
 import LoginPage from "./pages/LoginPage/LoginPage";
 
+import "./default.scss";
+
 const App = (props) => {
-  const { setCurrentUser, currentUser } = props;
+  const { currentUser, setCurrentUser } = props;
 
   useEffect(() => {
     const authListener = auth.onAuthStateChanged(async (userAuth) => {

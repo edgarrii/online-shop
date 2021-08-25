@@ -2,7 +2,7 @@ import React from "react";
 import "./dashboard.scss"
 
 const Dashboard = (props) => {
-  return <h1>Logged in!</h1>;
+  return <h1>Your Logged in!</h1>;
 };
 
-export default Dashboard
+export default Dashboard;

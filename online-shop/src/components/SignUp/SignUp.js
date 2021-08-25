@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom"
 import "./signUp.scss";
 
 import { auth, handleUserProfile } from "../../firebase/utils";
 
 import FormInput from "../Forms/FormInput/FormInput";
 import Button from "../Forms/Button/Button";
-import { withRouter } from "react-router";
 
 const SignUp = (props) => {
   const [displayName, setDisplayName] = useState("");
@@ -29,10 +29,13 @@ const SignUp = (props) => {
       const err = [`Password don't match`];
       setErrors(err);
 
-      if (password.length < 6) {
-        const err = [`Password should be at least 6 characters`];
-        setErrors(err);
-      }
+      return;
+    }
+
+    if (password.length < 6) {
+      const err = [`Password should be at least 6 characters`];
+      setErrors(err);
+
       return;
     }
 
@@ -44,7 +47,7 @@ const SignUp = (props) => {
 
       await handleUserProfile(user, { displayName });
       reset();
-      props.history.push('/')
+      props.history.push("/");
 
     } catch (err) {
       console.log(err);
