@@ -8,9 +8,8 @@ firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const GoogleProvider = new firebase.auth.GoogleAuthProvider();
+export const GoogleProvider = new firebase.auth.GoogleAuthProvider();
 GoogleProvider.setCustomParameters({ prompt: "select_account" });
-export const signInWithGoogle = () => auth.signInWithPopup(GoogleProvider);
 
 export const handleUserProfile = async (userAuth, additionalData) => {
   if (!userAuth) return;
@@ -20,7 +19,7 @@ export const handleUserProfile = async (userAuth, additionalData) => {
   const snapShot = await userRef.get();
 
   if (!snapShot.exists) {
-    const { displayName, email } = userAuth;
+    const { displayName, email, userRoles } = userAuth;
     const timeStamp = new Date();
 
     try {
@@ -28,11 +27,22 @@ export const handleUserProfile = async (userAuth, additionalData) => {
         displayName,
         email,
         createdDate: timeStamp,
+        userRoles,
         ...additionalData,
       });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   }
+
   return userRef;
+};
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
 };

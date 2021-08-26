@@ -3,10 +3,19 @@ import "./header.scss";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { auth } from "../../firebase/utils";
-import { connect } from "react-redux";
+import {
+  AUTHORIZED_ROUTE,
+  LOGIN_ROUTE,
+  REGISTRATION_ROUTE,
+} from "../../utils/paths";
+import { useSelector } from "react-redux";
+
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser,
+});
 
 const Header = (props) => {
-  const { currentUser } = props;
+  const { currentUser } = useSelector(mapState);
 
   return (
     <header className="header">
@@ -21,10 +30,12 @@ const Header = (props) => {
           {currentUser && (
             <ul>
               <li>
-                <Link to="/dashboard">My Account</Link>
+                <Link to={AUTHORIZED_ROUTE}>My Account</Link>
               </li>
               <li>
-                <Link to="/login" onClick={() => auth.signOut()}>LogOut</Link>
+                <Link to={LOGIN_ROUTE} onClick={() => auth.signOut()}>
+                  LogOut
+                </Link>
               </li>
             </ul>
           )}
@@ -32,10 +43,10 @@ const Header = (props) => {
           {!currentUser && (
             <ul>
               <li>
-                <Link to="/registration">Register</Link>
+                <Link to={REGISTRATION_ROUTE}>Register</Link>
               </li>
               <li>
-                <Link to="/login">Login</Link>
+                <Link to={LOGIN_ROUTE}>Login</Link>
               </li>
             </ul>
           )}
@@ -49,8 +60,4 @@ Header.defaultProps = {
   currentUser: null,
 };
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
-});
-
-export default connect(mapStateToProps, null)(Header);
+export default Header;
