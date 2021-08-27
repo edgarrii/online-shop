@@ -4,6 +4,7 @@ import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { auth } from "../../firebase/utils";
 import {
+  ADMIN_ROUTE,
   AUTHORIZED_ROUTE,
   LOGIN_ROUTE,
   REGISTRATION_ROUTE,
@@ -29,6 +30,9 @@ const Header = (props) => {
         <div className="callToActions">
           {currentUser && (
             <ul>
+              <li>
+                <Link to={ADMIN_ROUTE}>My ADMIN</Link>
+              </li>
               <li>
                 <Link to={AUTHORIZED_ROUTE}>My Account</Link>
               </li>

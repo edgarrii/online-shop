@@ -11,16 +11,16 @@ import LoginPage from "../pages/LoginPage/LoginPage";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Admin from "../pages/Admin/Admin";
 
-export const authRoutes = [
-  {
-    path: AUTHORIZED_ROUTE,
-    Component: Dashboard,
-  },
-  {
-    path: ADMIN_ROUTE,
-    Component: Admin,
-  },
-];
+// export const authRoutes = [
+//   {
+//     path: AUTHORIZED_ROUTE,
+//     Component: Dashboard,
+//   },
+//   {
+//     path: ADMIN_ROUTE,
+//     Component: Admin,
+//   },
+// ];
 
 export const publicRoutes = [
   {
