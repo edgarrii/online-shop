@@ -1,27 +1,20 @@
 import React, { useEffect } from "react";
-import { Route, useHistory } from "react-router-dom";
-import useAdminAuth from "../customHooks/useAdminAuth";
-import { LOGIN_ROUTE } from "../utils/paths";
-import useAuth from "../customHooks/useAuth";
+import { Redirect, Route, useHistory } from "react-router-dom";
+import { LOGIN_ROUTE, USER_ROUTE } from "../utils/paths";
 import { useSelector } from "react-redux";
+import ErrorComponent from "./ErrorComponent/ErrorComponent";
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
 });
 
-const ProtectedRoute = ({ allowedRoles, path, component: Component }) => {
+const ProtectedRoute = ({ path, component: Component }) => {
   const { currentUser } = useSelector(mapState);
   const history = useHistory();
 
   useEffect(() => {
-    if (!currentUser || !allowedRoles.includes(currentUser.userRoles[0])) {
-      console.log(
-        !currentUser || !allowedRoles.includes(currentUser.userRoles[0]),
-        currentUser,
-        allowedRoles
-      );
-
-      history.replace(LOGIN_ROUTE);
+    if (!currentUser?.userRoles?.includes("admin")) {
+      return <ErrorComponent />;
     }
   }, []);
 

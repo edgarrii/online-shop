@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "bootstrap": "^5.1.0",
+    "ckeditor4": "^4.16.2",
     "cloudinary-core": "^2.11.4",
     "firebase": "^8.9.1",
     "firebase-admin": "^9.11.0",
@@ -47,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "ckeditor4-react": "^2.0.1"
   }
 }

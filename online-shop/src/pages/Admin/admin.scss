@@ -1,0 +1,62 @@
+.admin {
+  width: 100%;
+  margin-top: 4rem;
+
+  .adminTitle {
+    font-size: 2.2rem;
+    position: relative;
+    text-align: center;
+  }
+
+  .addProduct {
+    font-weight: bold;
+    width: 20rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+
+  .cardWrapper {
+    width: 60%;
+    margin: 0 28%;
+
+    .productItem {
+      display: flex;
+      align-items: center;
+      margin: 1.5rem;
+
+      .cardInside {
+        margin-left: 4rem;
+      }
+
+      .deleteProduct {
+        background: red;
+        font-weight: bold;
+        width: 15rem;
+        height: 5rem;
+      }
+    }
+  }
+}
+
+.manageProducts {
+
+  h1 {
+    margin-top: 1.5rem;
+  }
+
+  table.results {
+    tr {
+
+      &:nth-child(even) {
+        background-color: #d3d3d3;
+      }
+
+      .thumb {
+        width: 15.0rem;
+        margin: 0 auto;
+      }
+
+    }
+  }
+}
+

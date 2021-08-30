@@ -1,0 +1,13 @@
+.buttonsModal {
+  display: flex;
+  justify-content: space-between;
+
+  .addBtn {
+    width: 20rem;
+  }
+
+  .cancelBtn {
+    background: red;
+    width: 20rem;
+  }
+}

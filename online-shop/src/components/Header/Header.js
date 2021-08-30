@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { auth } from "../../firebase/utils";
 import {
   ADMIN_ROUTE,
-  AUTHORIZED_ROUTE,
+  DASHBOARD_ROUTE,
   LOGIN_ROUTE,
   REGISTRATION_ROUTE,
 } from "../../utils/paths";
@@ -15,7 +15,7 @@ const mapState = ({ user }) => ({
   currentUser: user.currentUser,
 });
 
-const Header = (props) => {
+const Header = () => {
   const { currentUser } = useSelector(mapState);
 
   return (
@@ -30,11 +30,14 @@ const Header = (props) => {
         <div className="callToActions">
           {currentUser && (
             <ul>
+              {currentUser?.userRoles?.includes("admin") ? (
+                <li>
+                  <Link to={ADMIN_ROUTE}>My ADMIN</Link>
+                </li>
+              ) : null}
+
               <li>
-                <Link to={ADMIN_ROUTE}>My ADMIN</Link>
-              </li>
-              <li>
-                <Link to={AUTHORIZED_ROUTE}>My Account</Link>
+                <Link to={DASHBOARD_ROUTE}>My Account</Link>
               </li>
               <li>
                 <Link to={LOGIN_ROUTE} onClick={() => auth.signOut()}>
